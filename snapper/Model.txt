@@ -40,7 +40,7 @@ public aweObject ##name##Model extends AcsPaletteModel {
     props (
         double width = 0,
         double height = 0,
-        double thickness = 0,
+        double depth = 0,
         AcsPaletteMaterial material = getPaletteMaterial("productLine", "materialKey")
     );
 
