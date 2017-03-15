@@ -36,7 +36,7 @@
 
 package ##package##;
 
-public class ##name##Configurator extends PanelModel {
+public class ##name##Configurator extends ##name##Model {
     public aweObjectDomain (
         distance width = new DistanceEnum(0),
         distance height = new DistanceEnum(0),
