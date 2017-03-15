@@ -34,7 +34,7 @@
    END OF CETSC
 */
 
-package ##package##
+package ##package##;
 
 public class ##name##Geometry extends AweGeometry {
     public ##name##Model model;

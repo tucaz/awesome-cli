@@ -34,7 +34,7 @@
    END OF CETSC
 */
 
-package ##package##
+package ##package##;
 
 public class ##name##Product extends AweProduct {
     public AweModel<##name##Model> model;
