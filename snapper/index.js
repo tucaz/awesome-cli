@@ -9,8 +9,8 @@ module.exports = new (function () {
         packageTemplate = path.join(__dirname, './Package.txt');
 
     this.scaffold = (name, package, location, callback) => {
-        package = package || 'custom';
         location = location || path.dirname(require.main.filename);
+        package = package || extractPackage(location);
 
         createOrReplaceDirectory(location, err => {
             fs.readFile(snapperTemplate, 'utf-8', (err, snapperContent) => {
@@ -66,6 +66,22 @@ module.exports = new (function () {
                 });
             });
         });
+    }
+
+    function extractPackage(location) {
+        if(location.indexOf('custom') === -1) return 'custom';
+
+        let folders = location.split('custom');
+        var package = 'custom' + folders[1].replace(/\//g, '.').replace(/\\/g, '.'),
+            segments = package.split('.');
+
+        package = package.replace(segments[segments.length - 1], firstToLowerCase(segments[segments.length - 1]));
+
+        return package;
+    }
+
+    function firstToLowerCase(s) {
+        return s[0].toLowerCase() + s.substring(1, s.length);
     }
 
     function createOrReplaceDirectory(dirName, callback) {
