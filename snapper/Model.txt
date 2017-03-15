@@ -45,6 +45,6 @@ public aweObject ##name##Model extends AcsPaletteModel {
     );
 
     extend public LinearProductModel ref() {
-        return new LinearProductModel(this.width, this.thickness, this.height);
+        return new LinearProductModel(this.width, this.depth, this.height);
     }
 }
