@@ -60,9 +60,10 @@ module.exports = new (function () {
     }
 
     function extractPackage(location) {
-        if(location.indexOf('custom') === -1) return 'custom';
+        const fullLoc = path.resolve(location);
+        if(fullLoc.indexOf('custom') === -1) return 'custom';
 
-        let folders = location.split('custom');
+        let folders = fullLoc.split('custom');
         var package = 'custom' + folders[1].replace(/\//g, '.').replace(/\\/g, '.'),
             segments = package.split('.');
 
