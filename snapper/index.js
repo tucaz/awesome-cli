@@ -3,7 +3,6 @@ module.exports = new (function () {
         fs = require('fs'),
         snapperTemplate = path.join(__dirname, 'Snapper.txt'),
         productTemplate = path.join(__dirname, './Product.txt'),
-        modelTemplate = path.join(__dirname, './Model.txt'),
         geometryTemplate = path.join(__dirname, './Geometry.txt'),
         configuratorTemplate = path.join(__dirname, './Configurator.txt'),
         packageTemplate = path.join(__dirname, './Package.txt');
@@ -17,44 +16,36 @@ module.exports = new (function () {
                 if (err) return callback(err);
                 fs.readFile(productTemplate, 'utf-8', (err, productContent) => {
                     if (err) return callback(err);
-                    fs.readFile(modelTemplate, 'utf-8', (err, modelContent) => {
+                    fs.readFile(geometryTemplate, 'utf-8', (err, geometryContent) => {
                         if (err) return callback(err);
-                        fs.readFile(geometryTemplate, 'utf-8', (err, geometryContent) => {
+                        fs.readFile(configuratorTemplate, 'utf-8', (err, configuratorContent) => {
                             if (err) return callback(err);
-                            fs.readFile(configuratorTemplate, 'utf-8', (err, configuratorContent) => {
+                            fs.readFile(packageTemplate, 'utf-8', (err, packageContent) => {
                                 if (err) return callback(err);
-                                fs.readFile(packageTemplate, 'utf-8', (err, packageContent) => {
+
+                                snapperContent = snapperContent.replace(/##name##/g, name).replace(/##package##/g, package);
+                                productContent = productContent.replace(/##name##/g, name).replace(/##package##/g, package);
+                                geometryContent = geometryContent.replace(/##name##/g, name).replace(/##package##/g, package);
+                                configuratorContent = configuratorContent.replace(/##name##/g, name).replace(/##package##/g, package);
+                                packageContent = packageContent.replace(/##name##/g, name).replace(/##package##/g, package);
+
+                                let snapperFile = `${name}Snapper.cm`,
+                                    productFile = `${name}Product.cm`,
+                                    geometryFile = `${name}Geometry.cm`,
+                                    configuratorFile = `${name}Configurator.cm`,
+                                    packageFile = `package.cm`;
+
+                                saveFile(path.join(location, snapperFile), snapperContent, (err) => {
                                     if (err) return callback(err);
-
-                                    snapperContent = snapperContent.replace(/##name##/g, name).replace(/##package##/g, package);
-                                    productContent = productContent.replace(/##name##/g, name).replace(/##package##/g, package);
-                                    modelContent = modelContent.replace(/##name##/g, name).replace(/##package##/g, package);
-                                    geometryContent = geometryContent.replace(/##name##/g, name).replace(/##package##/g, package);
-                                    configuratorContent = configuratorContent.replace(/##name##/g, name).replace(/##package##/g, package);
-                                    packageContent = packageContent.replace(/##name##/g, name).replace(/##package##/g, package);
-
-                                    let snapperFile = `${name}Snapper.cm`,
-                                        productFile = `${name}Product.cm`,
-                                        modelFile = `${name}Model.cm`,
-                                        geometryFile = `${name}Geometry.cm`,
-                                        configuratorFile = `${name}Configurator.cm`,
-                                        packageFile = `package.cm`;
-
-                                    saveFile(path.join(location, snapperFile), snapperContent, (err) => {
+                                    saveFile(path.join(location, productFile), productContent, (err) => {
                                         if (err) return callback(err);
-                                        saveFile(path.join(location, productFile), productContent, (err) => {
+                                        saveFile(path.join(location, geometryFile), geometryContent, (err) => {
                                             if (err) return callback(err);
-                                            saveFile(path.join(location, modelFile), modelContent, (err) => {
+                                            saveFile(path.join(location, configuratorFile), configuratorContent, (err) => {
                                                 if (err) return callback(err);
-                                                saveFile(path.join(location, geometryFile), geometryContent, (err) => {
+                                                saveFile(path.join(location, packageFile), packageContent, (err) => {
                                                     if (err) return callback(err);
-                                                    saveFile(path.join(location, configuratorFile), configuratorContent, (err) => {
-                                                        if (err) return callback(err);
-                                                        saveFile(path.join(location, packageFile), packageContent, (err) => {
-                                                            if (err) return callback(err);
-                                                            callback(null);
-                                                        });
-                                                    });
+                                                    callback(null);
                                                 });
                                             });
                                         });
