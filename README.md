@@ -4,7 +4,7 @@ Awesome CLI is a command line utility to interact and scaffold [Awesome](https:/
 
 # Installation
 
-Simply run `npm install awesome-cli` and you are set.
+Simply run `npm install -g awesome-cli` and you are set.
 
 # Usage
 
