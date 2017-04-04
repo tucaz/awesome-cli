@@ -37,9 +37,9 @@
 package ##package##;
 
 public class ##name##Geometry extends AweGeometry {
-    public ##name##Model model;
+    public ##name##Configurator model;
     
-    public constructor(##name##Model model) {
+    public constructor(##name##Configurator model) {
         this.model = model;
     }
 

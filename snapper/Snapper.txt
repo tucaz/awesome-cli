@@ -66,6 +66,6 @@ public class ##name##Snapper extends StretchableSnapper {
     }
 
     public LinearProductModel ref() {
-        return this.configurator.##name##Model.ref();
+        return this.configurator.##name##Configurator.ref();
     }
 }

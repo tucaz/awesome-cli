@@ -37,7 +37,7 @@
 package ##package##;
 
 public class ##name##Product extends AweProduct {
-    public AweModel<##name##Model> model;
+    public AweModel<##name##Configurator> model;
 
     public void build() {
         this << new ##name##Geometry(this.model);
