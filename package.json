@@ -1,6 +1,6 @@
 {
   "name": "awesome-cli",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "CLI for Awesome framework for CM Language",
   "main": "index.js",
   "scripts": {

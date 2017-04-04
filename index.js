@@ -12,7 +12,8 @@ program
     .option('-p, --package [package]', 'Package/namespace')
     .option('-l, --location [location]', 'Location where files will be generated')
     .action((name, options) => {
-        snapperCommand.scaffold(name, options.package, options.location, (err, result) => {
+        let loc = options.location || "./" + name;
+        snapperCommand.scaffold(name, options.package, loc, (err, result) => {
             if(err) {
                 console.log(`Error while scaffolding ${name}Snapper`);
                 console.log(err);
