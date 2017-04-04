@@ -19,7 +19,8 @@ Awesome CLI offers the following operations:
 ### Arguments
 
 Argument Name | Optional | Description
------------- | ------------- | __________SnapperName | No | Name of the snapper that will have all the boilerplate classes generated
+------------ | ------------- | ------------
+SnapperName | No | Name of the snapper that will have all the boilerplate classes generated
 location | Yes | Specify the location where snapper classes are going to be generated. If not specified the folder where the command is being ran will be used
 
 ### Examples
