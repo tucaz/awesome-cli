@@ -36,7 +36,7 @@
 
 package ##package##;
 
-public aweObject ##name##Configurator extends AcsPaletteModel {
+public aweObject ##name##Model extends AcsPaletteModel {
     props (
         double width = 0,
         double height = 0,
