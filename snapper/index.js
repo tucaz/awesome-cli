@@ -4,7 +4,7 @@ module.exports = new (function () {
         snapperTemplate = path.join(__dirname, 'Snapper.txt'),
         productTemplate = path.join(__dirname, './Product.txt'),
         geometryTemplate = path.join(__dirname, './Geometry.txt'),
-        configuratorTemplate = path.join(__dirname, './Configurator.txt'),
+        modelTemplate = path.join(__dirname, './Model.txt'),
         packageTemplate = path.join(__dirname, './Package.txt');
 
     this.scaffold = (name, package, location, callback) => {
@@ -18,7 +18,7 @@ module.exports = new (function () {
                     if (err) return callback(err);
                     fs.readFile(geometryTemplate, 'utf-8', (err, geometryContent) => {
                         if (err) return callback(err);
-                        fs.readFile(configuratorTemplate, 'utf-8', (err, configuratorContent) => {
+                        fs.readFile(modelTemplate, 'utf-8', (err, modelContent) => {
                             if (err) return callback(err);
                             fs.readFile(packageTemplate, 'utf-8', (err, packageContent) => {
                                 if (err) return callback(err);
@@ -26,13 +26,13 @@ module.exports = new (function () {
                                 snapperContent = snapperContent.replace(/##name##/g, name).replace(/##package##/g, package);
                                 productContent = productContent.replace(/##name##/g, name).replace(/##package##/g, package);
                                 geometryContent = geometryContent.replace(/##name##/g, name).replace(/##package##/g, package);
-                                configuratorContent = configuratorContent.replace(/##name##/g, name).replace(/##package##/g, package);
+                                modelContent = modelContent.replace(/##name##/g, name).replace(/##package##/g, package);
                                 packageContent = packageContent.replace(/##name##/g, name).replace(/##package##/g, package);
 
                                 let snapperFile = `${name}Snapper.cm`,
                                     productFile = `${name}Product.cm`,
                                     geometryFile = `${name}Geometry.cm`,
-                                    configuratorFile = `${name}Configurator.cm`,
+                                    modelFile = `${name}Model.cm`,
                                     packageFile = `package.cm`;
 
                                 saveFile(path.join(location, snapperFile), snapperContent, (err) => {
@@ -41,7 +41,7 @@ module.exports = new (function () {
                                         if (err) return callback(err);
                                         saveFile(path.join(location, geometryFile), geometryContent, (err) => {
                                             if (err) return callback(err);
-                                            saveFile(path.join(location, configuratorFile), configuratorContent, (err) => {
+                                            saveFile(path.join(location, modelFile), modelContent, (err) => {
                                                 if (err) return callback(err);
                                                 saveFile(path.join(location, packageFile), packageContent, (err) => {
                                                     if (err) return callback(err);
