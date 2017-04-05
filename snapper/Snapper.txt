@@ -38,31 +38,31 @@ package ##package##;
 
 public class ##name##Snapper extends StretchableSnapper {
     // public bool stretchWidth(Connector current, point p) {
-    //     var config = this.configurator.##name##Configurator;
+    //     var config = this.configurator.##name##Model;
 
     //     return this.stretchWidth(current, this.connectorCache.get("p0"), config.width, config.widthDomain, p);
     // }
 
     // public void afterStretchWidth(double newWidth) {
-    //     this.configurator.##name##Configurator.width = newWidth;
+    //     this.configurator.##name##Model.width = newWidth;
     // }
 
     // public bool stretchHeight(Connector current, point p) {
-    //     var config = this.configurator.##name##Configurator;
+    //     var config = this.configurator.##name##Model;
 
     //     return this.stretchHeight(current, null, config.height, config.heightDomain, p);
     // }
 
     // public void afterStretchHeight(double newHeight) {
-    //     this.configurator.##name##Configurator.height = newHeight;
+    //     this.configurator.##name##Model.height = newHeight;
     // }
 
     public AweProduct createProduct(AweObject configurator) {
         return new ##name##Product(configurator);
     }
     
-    public AweObject createConfigurator() {
-        return new ##name##Configurator();
+    public AweObject createModel() {
+        return new ##name##Model();
     }
 
     public LinearProductModel ref() {
